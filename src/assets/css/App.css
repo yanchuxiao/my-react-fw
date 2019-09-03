@@ -1,0 +1,43 @@
+@import "../../../node_modules/antd/dist/antd.css";
+
+/*logo样式*/
+.logo{
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 28px 16px 0;
+  float: left;
+}
+
+.app-content{
+  background: #fff;
+  padding: 20px;
+  margin: 0;
+  min-height: 280px;
+  overflow-y: auto;
+}
+
+/*页面滚动条样式*/
+.app-content::-webkit-scrollbar{
+  width: 5px;
+  height: 1px;
+}
+.app-content::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+
+  border-radius: 10px;
+
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+
+  background: #535353;
+
+}
+
+.app-content::-webkit-scrollbar-track {/*滚动条里面轨道*/
+
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+
+  border-radius: 10px;
+
+  background: #EDEDED;
+
+}
