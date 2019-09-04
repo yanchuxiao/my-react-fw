@@ -1,6 +1,9 @@
 @import "../../../node_modules/antd/dist/antd.css";
 
 /*logo样式*/
+html{
+  overflow-y: hidden;
+}
 .logo{
   width: 120px;
   height: 31px;
