@@ -1,6 +1,6 @@
 import React from 'react';
 import AppMain from './components/Layout/AppMain'
-import './assets/css/App.css';
+import './assets/css/App.less';
 
 function App() {
   return (
