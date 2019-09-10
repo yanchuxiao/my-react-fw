@@ -25,7 +25,7 @@ class Work extends Component{
     render() {
         return (
             <div>
-                <p>工作台</p>
+                <p className="works">Less自适应测试</p>
                 <p>接口状态：{this.state.data}</p>
                 <Button type='primary'>
                     <Link to='/work/view'>详情</Link>

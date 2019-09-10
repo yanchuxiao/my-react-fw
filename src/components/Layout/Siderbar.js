@@ -1,4 +1,5 @@
 import { Layout, Menu, Icon } from 'antd';
+import $ from 'jquery'
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
@@ -11,7 +12,8 @@ class Siderbar extends Component{
         this.state = {
             current: this.props.routes[0].path,  // 默认选中第一个
             subCurrent: '',
-            collapsed: false
+            collapsed: false,
+            iconLeft: $(window).width() >= 768 ? '220px' : '100px'
         }
     }
     componentWillMount() {
@@ -60,7 +62,7 @@ class Siderbar extends Component{
         return (
             <Sider trigger={null} collapsible collapsed={this.state.collapsed} style={{ background: '#fff' }}>
                 <Icon
-                    style={{ position: 'fixed', top: 24, left: 220, color: '#ffffff', fontSize: '18px' }}
+                    style={{ position: 'fixed', top: 24, left: this.state.iconLeft, color: '#ffffff', fontSize: '18px' }}
                     type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                     onClick={this.toggle}
                 />

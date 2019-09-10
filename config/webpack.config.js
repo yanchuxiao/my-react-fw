@@ -348,7 +348,6 @@ module.exports = function(webpackEnv) {
               modifyVars: {
                 'primary-color': '#ff8b12',
                 'link-color': '#ff8b12',
-                'border-radius-base': '2px',
               },
               javascriptEnabled: true,
             }

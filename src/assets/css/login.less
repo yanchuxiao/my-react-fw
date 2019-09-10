@@ -1,0 +1,23 @@
+.rem(@name,@px) {
+        @{name}: unit(@px / 192, rem);
+}
+
+.login{
+    height: 100vh;
+    width: 100%;
+    background: url("../images/loginbg.jpg") no-repeat center;
+    .loginForm{
+        width: 25%;
+        position: fixed;
+        text-align: center;
+        left: 37.5%;
+        top: 30%;
+        background-color: rgba(0,0,0,0.2);
+        padding: 1% 2%;
+        border-radius: 3%;
+    }
+}
+.works{
+    color: red;
+    .rem(font-size, 18)
+}

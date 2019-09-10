@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery'
 import {Layout, Menu, Icon, Avatar, Dropdown, Badge, message} from "antd";
 import {constantRoutes} from "../../router/router";
 import {removeToken} from "../../libs/cookies";
@@ -10,7 +11,10 @@ class Navbar extends Component{
         super(props)
         this.state = {
             username: '',
-            current: 'work'
+            current: 'work',
+            logoWidth: $(window).width() >= 768 ? '120px' : '35px',
+            menuLeft: $(window).width() >= 768 ? '80px' : '20px',
+            display: $(window).width() >= 768 ? 'unset' : 'none',
         }
     }
     componentDidMount() {
@@ -41,35 +45,66 @@ class Navbar extends Component{
                 </Menu.Item>
             </Menu>
         )
+        const downMenuMobile = (
+            <Menu style={{ width: '100%', textAlign: 'center' }}>
+                {
+                    constantRoutes.map((route, key) => {
+                        if (route.hidden) {
+                            return (
+                                null
+                            )
+                        } else {
+                            return (
+                                <Menu.Item key={route.name}>
+                                    <Link to={route.path}>
+                                        <Icon type={route.meta.icon} />
+                                        <span style={{ marginLeft: 10 }}>{route.meta.title}</span>
+                                    </Link>
+                                </Menu.Item>
+                            )
+                        }
+
+                    })
+                }
+            </Menu>
+        )
         return (
             <Header className="header">
-                <div className="logo" />
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                    selectedKeys={[this.state.current]}
-                    style={{ lineHeight: '64px', marginLeft: 80, float: 'left' }}
-                >
-                    {
-                        constantRoutes.map((route, key) => {
-                            if (route.hidden) {
-                                return (
-                                    null
-                                )
-                            } else {
-                                return (
-                                    <Menu.Item key={route.name}>
-                                        <Link to={route.path}>
-                                            <Icon type={route.meta.icon} />
-                                            {route.meta.title}
-                                        </Link>
-                                    </Menu.Item>
-                                )
-                            }
+                <div className="logo" style={{width: this.state.logoWidth}} />
+                {
+                    this.state.menuLeft === '80px' ?
+                        <Menu
+                            theme="dark"
+                            mode="horizontal"
+                            selectedKeys={[this.state.current]}
+                            style={{ lineHeight: '64px', marginLeft: this.state.menuLeft, float: 'left' }}
+                        >
+                            {
+                                constantRoutes.map((route, key) => {
+                                    if (route.hidden) {
+                                        return (
+                                            null
+                                        )
+                                    } else {
+                                        return (
+                                            <Menu.Item key={route.name}>
+                                                <Link to={route.path}>
+                                                    <Icon type={route.meta.icon} />
+                                                    {route.meta.title}
+                                                </Link>
+                                            </Menu.Item>
+                                        )
+                                    }
 
-                        })
-                    }
-                </Menu>
+                                })
+                            }
+                        </Menu> :
+                        <Dropdown overlay={downMenuMobile} placement="bottomCenter">
+                            <div style={{float: 'left',marginLeft: 80,cursor: 'pointer',color: '#fff'}}>
+                                <Icon style={{fontSize: '20px',marginLeft: 10}} type="appstore" />
+                            </div>
+                        </Dropdown>
+                }
                 <div style={{ float: 'right', color: '#ffffff' }}>
                     <div style={{float:'left'}}>
                         <Badge dot>
@@ -80,9 +115,9 @@ class Navbar extends Component{
                     </div>
                     <Dropdown overlay={downMenu} placement="bottomCenter">
                         <div style={{float: 'right',marginLeft: 20,cursor: 'pointer'}}>
-                            <Avatar style={{ backgroundColor: '#87d068' }} icon="user" />
-                            <span style={{ marginLeft: 10 }}>{this.state.username}</span>
-                            <Icon style={{fontSize: '16px',marginLeft: 10}} type="caret-down" />
+                            <Avatar style={{ backgroundColor: '#ff8b12' }} icon="user" />
+                            <span style={{ marginLeft: 10, display: this.state.display }}>{this.state.username}</span>
+                            <Icon style={{fontSize: '16px',marginLeft: 10, display: this.state.display}} type="caret-down" />
                         </div>
                     </Dropdown>
                 </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Input, Icon} from 'antd';
 import { setToken } from "../../libs/cookies";
-import '../../assets/css/login.css'
+import '../../assets/css/login.less'
 
 class Login extends Component{
     constructor(props) {
