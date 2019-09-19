@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { getToken } from "./cookies";
 import {message} from "antd";
-import { apiUrl } from "../config/config";
+// import { apiUrl } from "../config/config";
 
 // axios实例
 const service = axios.create({
-    baseURL: apiUrl(),
+    baseURL: process.env.BASE_API,
     timeout: 30000  //  请求超时
 })
 
